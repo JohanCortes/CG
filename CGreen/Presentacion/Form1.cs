@@ -32,16 +32,7 @@ namespace CGreen
                 {
                     res += (col.ColumnName)[0].ToString().ToUpper() + col.ColumnName.Remove(0,1) + "\u0009";
                 }
-                res += "\u000d\u000a";
-                foreach (char c in res)
-                {
-                    if (c == 9)
-                    {
-                        res += "----";
-                    }
-                    res += "-";
-                }
-                res += "\u000d\u000a";
+                res += "\u000d\u000a-----------------------------------------------\u000d\u000a";
                 foreach (DataRow reg in t.Rows)
                 {
                     
