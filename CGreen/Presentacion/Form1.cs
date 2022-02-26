@@ -30,7 +30,7 @@ namespace CGreen
                 string res = "";
                 foreach (DataColumn col in t.Columns)
                 {
-                    res += (col.ColumnName)[0].ToString().ToUpper() + col.ColumnName.Remove(0,1) + "\u0009";
+                    res += col.ColumnName[0].ToString().ToUpper() + col.ColumnName.Remove(0,1) + "\t";
                 }
                 res += "\u000d\u000a";
                 foreach (char c in res)
@@ -44,10 +44,9 @@ namespace CGreen
                 res += "\u000d\u000a";
                 foreach (DataRow reg in t.Rows)
                 {
-                    
                     foreach (object dato in reg.ItemArray)
                     {
-                        res += dato + "\u0009";
+                        res += dato + "\t";
                     }
                     res = res.Remove(res.Length - 1);
                     res += "\u000d\u000a";
@@ -57,7 +56,7 @@ namespace CGreen
             }
             else
             {
-                textBox1.Text = "";
+                textBox1.Clear();
             }
         }
 
