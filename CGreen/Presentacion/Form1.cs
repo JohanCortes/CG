@@ -22,6 +22,8 @@ namespace CGreen
         L_Venta vt = new L_Venta();
         L_Producto pr = new L_Producto();
         L_Inventario i = new L_Inventario();
+        L_Control c = new L_Control();
+        L_Transaccion t = new L_Transaccion();
 
         void imprimir(DataTable t)
         {
@@ -88,6 +90,16 @@ namespace CGreen
         private void button6_Click(object sender, EventArgs e)
         {
             imprimir(vt.selectVP(2));
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            imprimir(c.selectC(new DateTime(2022, 2, 26), 1));
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            imprimir(t.selectT(489418912));
         }
     }
 }

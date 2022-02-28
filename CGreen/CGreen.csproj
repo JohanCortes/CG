@@ -68,11 +68,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Datos\D_Conexion.cs" />
+    <Compile Include="Datos\D_Transaccion.cs" />
+    <Compile Include="Datos\D_Control.cs" />
     <Compile Include="Datos\D_Inventario.cs" />
     <Compile Include="Datos\D_Producto.cs" />
     <Compile Include="Datos\D_Punto.cs" />
     <Compile Include="Datos\D_Vendedor.cs" />
     <Compile Include="Datos\D_Venta.cs" />
+    <Compile Include="Logica\L_Transaccion.cs" />
+    <Compile Include="Logica\L_Control.cs" />
     <Compile Include="Logica\L_Inventario.cs" />
     <Compile Include="Logica\L_Producto.cs" />
     <Compile Include="Logica\L_Punto.cs" />

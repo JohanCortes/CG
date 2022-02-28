@@ -245,11 +245,13 @@ insert into control_inv(id_producto,id_punto,fecha,id_tipo,unidades)values(@id_p
 go
 
 create proc sel_control_inv
-@fecha smalldatetime
+@fecha smalldatetime,
+@id_punto smallint
 as
-select i.id_producto, i.id_punto, i.stock-isnull(s.u,0) from inventario i left join
+select i.id_producto, i.id_punto, 'stock'=i.stock-isnull(s.u,0) from inventario i left join
 (select id_producto, id_punto, 'u'=sum(unidades) from control_inv where fecha>@fecha group by id_producto, id_punto) s 
 on i.id_producto=s.id_producto and i.id_producto=s.id_punto
+where i.id_punto=@id_punto
 go
 
 --Procedures Transaccion
@@ -269,7 +271,7 @@ select * from transaccion where cc_vendedor=@cc order by fecha
 
 
 go
---exec sel_control_inv @fecha='2022-02-26'
+--exec sel_control_inv @fecha='2022-02-26', @id_punto=2
 --exec sel_ven_pro @id_v=2
 
 --Test
@@ -325,6 +327,7 @@ go
 select * from venta_producto
 go
 --insert into transaccion(cc_vendedor,fecha,id_tipo,valor)values(489418912,sysdatetime(),2,-7000)
-
+go
+select * from transaccion
 
 */
