@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using CGreen.Logica;
+using CGreen.Datos;
 
 namespace CGreen
 {
@@ -100,6 +101,49 @@ namespace CGreen
         private void button8_Click(object sender, EventArgs e)
         {
             imprimir(t.selectT(489418912));
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void query(string q)
+        {
+            SqlConnection con = new SqlConnection(D_Conexion.cadcon());
+            con.Open();
+            if ((q.ToLower().Contains("insert") || q.ToLower().Contains("update") || 
+                q.ToLower().Contains("delete")) && !q.ToLower().Contains("exec "))
+            {
+                SqlCommand cmd = new SqlCommand(q, con);
+                textBox1.Text= cmd.ExecuteNonQuery() + " fila(s) afectada(s).";
+                con.Close();
+            }
+            else
+            {
+                SqlDataAdapter cmd = new SqlDataAdapter(q,con);
+                DataTable table = new DataTable();
+                cmd.Fill(table);
+                imprimir(table);
+                con.Close();
+            }
+        }
+
+        private void textBox2_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 188 && e.Shift)
+            {
+                Console.WriteLine(textBox2.Text);
+                try
+                {
+                    query(textBox2.Text);
+                }
+                catch
+                {
+                    textBox1.Text = "Wrong Query";
+                }
+                textBox2.SelectAll();
+            }
         }
     }
 }
