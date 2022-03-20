@@ -103,11 +103,6 @@ namespace CGreen
             imprimir(t.selectT(489418912));
         }
 
-        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
-        }
-
         private void query(string q)
         {
             SqlConnection con = new SqlConnection(D_Conexion.cadcon());
@@ -144,6 +139,12 @@ namespace CGreen
                 }
                 textBox2.SelectAll();
             }
+        }
+
+        private void pictureBox1_DoubleClick(object sender, EventArgs e)
+        {
+            Presentacion.Form2 f = new Presentacion.Form2();
+            f.Show();
         }
     }
 }

@@ -22,5 +22,15 @@ namespace CGreen.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-D7N1NE2;Initial Catalog=cgreen;Integrated Security=True")]
+        public string cgreenConnectionString {
+            get {
+                return ((string)(this["cgreenConnectionString"]));
+            }
+        }
     }
 }
